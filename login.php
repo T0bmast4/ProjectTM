@@ -11,8 +11,12 @@ try {
 }
 ?>
 <html>
+    <head>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
     <form>
-        <p><input type="text" name="Benutzername" placeholder="Benutzername"></p>
-        <p><input type="text" name="Benutzername" placeholder="Passwort"></p>
+        <input type="text" name="Benutzername" placeholder="Benutzername">
+        <br>
+        <input type="text" name="Benutzername" placeholder="Passwort">
     </form>
 </html>
