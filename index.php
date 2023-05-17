@@ -12,5 +12,6 @@ try {
 <html>
     <form>
         <p><input type="text" name="Benutzername" placeholder="Benutzername"></p>
+        <p><input type="text" name="Benutzername" placeholder="Passwort"></p>
     </form>
 </html>
