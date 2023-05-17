@@ -9,3 +9,8 @@ try {
     
 }
 ?>
+<html>
+    <form>
+        <p><input type="text" name="Benutzername" placeholder="Benutzername"></p>
+    </form>
+</html>
