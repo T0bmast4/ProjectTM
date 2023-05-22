@@ -1,11 +1,13 @@
 <?php
-$dsn = "mysql:host=38.242.141.75;dbname=accounts";
+define('MYSQL_HOST', '38.242.141.75');
+define('MYSQL_USER', 'USERNAME');
+define('MYSQL_PASSWORD', 'PASSWORD');
+define('MYSQL_DATENBANK', 'accounts');
 
-$mysql_username = "USERNAME";
-$mysql_password = "PASSWORD";
+$dsn = "mysql:host=" . MYSQL_HOST . ";dbname=" . MYSQL_DATENBANK;
 
 try {
-    $db = new PDO($dsn, $mysql_username, $mysql_password);
+    $db = new PDO($dsn, MYSQL_USER, MYSQL_PASSWORD);
 } catch (PDOException $e) {
     
 }
