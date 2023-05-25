@@ -19,7 +19,7 @@ try {
     </head>
     <body>
         <div class="navbar">
-            <a href="#news" class="first">News</a>
+            <a href="index.html" class="first">Home</a>
             <div class="dropdown">
                 <button class="dropbtn">Find Work 
                   <i class="fa fa-caret-down"></i>

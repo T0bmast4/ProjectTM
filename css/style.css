@@ -300,6 +300,7 @@
   margin-left: 35%;
   margin-right: 35%;
   margin-top: 10%;
+
 }
 
 .textfield {
@@ -310,6 +311,7 @@
   border-radius: 20px;
   color: black;
   outline: none;
+  border: none;
 }
 
 .loginButton{
@@ -321,4 +323,6 @@
   color: black;
   outline: black;
   background-color: aquamarine;
+  border: none;
+  margin-bottom: 2%;
 }
