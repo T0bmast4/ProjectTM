@@ -61,11 +61,13 @@ try {
             <a href="#WebDesign">Web Design</a>
         </div>
 
-        <form action="login.php">
-            <input type="email" name="E-Mail" id="email" placeholder="E-Mail" required>
-            <input type="password" name="password" id="password" placeholder="Passwort" required>
-            <input type="submit" value="Anmelden">
-        </form>
+        <div class="loginWindow">
+            <form action="login.php">
+                <input type="email" name="E-Mail" id="email" placeholder="E-Mail" required>
+                <input type="password" name="password" id="password" placeholder="Passwort" required>
+                <input type="submit" value="Anmelden">
+            </form>
+        </div>
 </html>
 
 <?php

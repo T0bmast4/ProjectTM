@@ -292,3 +292,12 @@
     margin-top: -170px;
     margin-right: 200px;
 }
+
+.loginWindow{
+  background-color: #134a44;
+  border-radius: 8px;
+}
+
+.loginButto{
+  background-color: aquamarine;
+}
