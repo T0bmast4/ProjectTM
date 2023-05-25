@@ -1,0 +1,287 @@
+ /* Navbar container */
+ .navbar {
+    overflow: hidden;
+    font-family: fantasy;
+    border-bottom: solid rgb(179, 179, 179);
+    border-bottom-width: 2px;
+  }
+  
+  /* Links inside the navbar */
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .navbar a:hover, .dropdown:hover{
+    background-color: #dfe6de;
+    border-radius: 15px;
+  }
+  
+  /* The dropdown container */
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  /* Dropdown button */
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+  
+  /* Add underline to navbar links on hover */
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    text-decoration: none;
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 20px;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #dfe6de;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  } 
+
+  .first{
+    margin-left: 10%;
+  }
+
+  .navbar .search-container {
+    float: right;
+    margin-right: 10%;
+  }
+  
+  .navbar input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: #dfe6de;
+    border: none;
+    color: black;
+    outline: none;
+  }
+  
+  .navbar .search-container button {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #dfe6de;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navbar .search-container button:hover {
+    background: #ccd3cb;
+  }
+
+  .navbar input[type=text]:hover {
+    background: #ccd3cb;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 31.25rem;
+    padding-top: 11%;
+    padding-left: 7%;
+  }
+  
+  .searchBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  #searchQueryInput {
+    width: 100%;
+    height: 2.8rem;
+    background: #f5f5f5;
+    outline: none;
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+  }
+  
+  #searchQuerySubmit {
+    width: 3.5rem;
+    height: 2.8rem;
+    margin-left: -3.5rem;
+    background: none;
+    border: none;
+    outline: none;
+  }
+  
+  #searchQuerySubmit:hover {
+    cursor: pointer;
+  }
+
+  .navbar .laston {
+    float: right;
+  }
+
+  /* Navbar container */
+ .navbartwo {
+    overflow: hidden;
+    font-family: fantasy;
+    background-color: #e7e7e7;
+  }
+  
+  /* Links inside the navbar */
+  .navbartwo a {
+    float: left;
+    font-size: 14px;
+    color: rgb(112, 112, 112);
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+  }
+
+  .navbartwo a:hover, .dropdown:hover{
+    text-decoration: underline;
+  }
+
+  .firsttwo{
+    margin-left: 15%;
+    float: left;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    margin-top: 9px;
+    font-weight: 600;
+  }
+
+  .slide{
+    margin-left: 13%;
+    margin-right: 13%;
+    margin-top: 70px;
+  }
+
+  .slidedivs{
+    float: left;
+    margin-right: 39px;
+    width: 250px;
+    height: 300px;
+    background-color: #dfe6de;
+    border-radius: 40px;
+    margin-bottom: 40px;
+    text-decoration: none;
+    color: black;
+    font-family: fantasy;
+    text-align: center;
+    font-size: 17px;
+  }
+
+  .slidedivslast{
+    float: left;
+    width: 250px;
+    height: 300px;
+    background-color: #dfe6de;
+    border-radius: 40px;
+    margin-bottom: 40px;
+    text-decoration: none;
+    color: black;
+    font-family: fantasy;
+    text-align: center;
+    font-size: 17px;
+  }
+
+  .img{
+    width: 250px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    margin-bottom: 10px;
+  }
+
+  /*
+  .slidedivs:hover {
+    width: 270px;
+    height: 320px;
+    margin-right: 19px;
+  }
+
+  .slidedivs:hover img{
+    width: 270px;
+  }
+
+  .slidedivslast:hover{
+    width: 270px;
+    height: 320px;
+  }
+
+  .slidedivslast:hover img{
+    width: 270px;
+  }
+
+  .slidedivslast:hover .slide{
+    margin-right: 10%;
+  }
+  */
+
+
+  .grün{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+    height: 350px;
+    background-color: #134a44;
+    border-radius: 30px;
+  }
+
+  h1{
+    font-family: fantasy;
+    font-size: 40px;
+  }
+
+
+.imgnav{
+    width: 40px;
+    padding-top: -5px;
+}
+
+.logogrün{
+    width: 300px;
+    float: right;
+    margin-top: -170px;
+    margin-right: 200px;
+}
