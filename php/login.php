@@ -1,6 +1,20 @@
+<?php
+define('MYSQL_HOST', '38.242.141.75');
+define('MYSQL_BENUTZER', '');
+define('MYSQL_KENNWORT', '');
+define('MYSQL_DATENBANK', 'accounts');
+
+$dsn = "mysql:host=" . MYSQL_HOST . ";dbname=" . MYSQL_DATABASE;
+
+try {
+    $db = new PDO($dsn, MYSQL_USER, MYSQL_PASSWORD);
+} catch (PDOException $e) {
+    
+}
+?>
 <html>
     <head>
-        <title>Shop</title>
+        <title>Login</title>
         <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
@@ -46,36 +60,15 @@
             <a href="#Coaching">Coaching</a>
             <a href="#WebDesign">Web Design</a>
         </div>
+
+        <form action="login.php">
+            <input type="email" name="E-Mail" id="email" placeholder="E-Mail" required>
+            <input type="password" name="password" id="password" placeholder="Passwort" required>
+            <input type="submit" value="Anmelden">
+        </form>
 </html>
 
 <?php
-define('MYSQL_HOST', 'localhost');
-define('MYSQL_BENUTZER', 'root');
-define('MYSQL_KENNWORT', '');
-define('MYSQL_DATENBANK', 'smartshift');
-$db = mysqli_connect(MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
-
-if(!isset($_POST['vorname'])) {
-    return;
-}
-
-if(!isset($_POST['nachname'])) {
-    return;
-}
-
-if(!isset($_POST['email'])) {
-    return;
-}
-
-if(!isset($_POST['password'])) {
-    return;
-}
-$vorname = $_POST['vorname'];
-$nachname = $_POST['nachname'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$query = mysqli_query($db, "INSERT INTO `benutzer`(`Vorname`, `Nachname`, `Email`, `Passwort`) VALUES ('" . $vorname . "','" . $nachname . "','" . $email . "','" . $password . "');");
-define('LOGIN_NAME', $vorname);
 
 
 
