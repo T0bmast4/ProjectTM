@@ -1,8 +1,8 @@
 <?php
-define('MYSQL_HOST', '38.242.141.75');
-define('MYSQL_BENUTZER', '');
-define('MYSQL_KENNWORT', '');
-define('MYSQL_DATENBANK', 'accounts');
+define('MYSQL_HOST', 'localhost');
+define('MYSQL_USER', 'root');
+define('MYSQL_PASSWORD', '');
+define('MYSQL_DATABASE', 'accounts');
 
 $dsn = "mysql:host=" . MYSQL_HOST . ";dbname=" . MYSQL_DATABASE;
 
@@ -45,12 +45,7 @@ try {
                     <a href="#WebDesigner">Web Designer</a>
               </div>
             </div>
-            <div class="search-container">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Search.." name="search">
-                  <button type="submit" class="last">Submit</i></button>
-                </form>
-            </div>
+            <a href="login.php" class="laston">Log In</a>
         </div>
         <div class="navbartwo">
             <p class="firsttwo">Categories |</p>
@@ -69,8 +64,9 @@ try {
                 <input type="password" name="password" id="password" class="textfield" placeholder="Passwort" required>
                 <br>
                 <br>
-                <input type="submit" value="Anmelden" class="loginButton">
+                <input type="button" value="Anmelden" class="loginButton">
             </form>
+            <a href="register.php" class="registerLink">Noch nicht registriert?</a>
         </div>
 </html>
 

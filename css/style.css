@@ -164,6 +164,7 @@
 
   .navbar .laston {
     float: right;
+    margin-right: 15%;
   }
 
   /* Navbar container */
@@ -295,12 +296,11 @@
 
 .loginWindow{
   background-color: #134a44;
-  border-radius: 8px;
+  border-radius: 8%;
   text-align: center;
-  margin-left: 35%;
-  margin-right: 35%;
+  margin-left: 40%;
+  margin-right: 40%;
   margin-top: 10%;
-
 }
 
 .textfield {
@@ -325,4 +325,21 @@
   background-color: aquamarine;
   border: none;
   margin-bottom: 2%;
+}
+
+.loginButton:hover{
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  background-color: #dfe6de;
+  border-radius: 20px;
+  color: black;
+  outline: black;
+  background-color: #7fffd4a8;
+  border: none;
+  margin-bottom: 2%;
+}
+
+.registerLink{
+  color: white;
 }
