@@ -1,12 +1,12 @@
- /* Navbar container */
  .navbar {
     overflow: hidden;
     font-family: fantasy;
     border-bottom: solid rgb(179, 179, 179);
     border-bottom-width: 2px;
+    background-color: white;
+    margin-top: -7px;
   }
   
-  /* Links inside the navbar */
   .navbar a {
     float: left;
     font-size: 16px;
@@ -21,13 +21,11 @@
     border-radius: 15px;
   }
   
-  /* The dropdown container */
   .dropdown {
     float: left;
     overflow: hidden;
   }
-  
-  /* Dropdown button */
+
   .dropdown .dropbtn {
     font-size: 16px;
     border: none;
@@ -35,16 +33,14 @@
     color: black;
     padding: 14px 16px;
     background-color: inherit;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
+    font-family: inherit; 
+    margin: 0; 
   }
-  
-  /* Add underline to navbar links on hover */
+
   .navbar a:hover, .dropdown:hover .dropbtn {
     text-decoration: none;
   }
   
-  /* Dropdown content (hidden by default) */
   .dropdown-content {
     display: none;
     position: absolute;
@@ -55,7 +51,6 @@
     border-radius: 20px;
   }
   
-  /* Links inside the dropdown */
   .dropdown-content a {
     float: none;
     color: black;
@@ -63,27 +58,18 @@
     text-decoration: none;
     display: block;
     text-align: left;
-    border-radius: 20px;
   }
   
-  /* Add a grey background color to dropdown links on hover */
   .dropdown-content a:hover {
     background-color: #dfe6de;
-    border-radius: 20px;
   }
   
-  /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {
     display: block;
   } 
 
   .first{
     margin-left: 10%;
-  }
-
-  .first:hover{
-    background-color: white;
-
   }
 
   .navbar .search-container {
@@ -164,17 +150,22 @@
 
   .navbar .laston {
     float: right;
+    
+  }
+  .navbar #right{
+    float: right;
     margin-right: 15%;
+    
   }
 
-  /* Navbar container */
  .navbartwo {
     overflow: hidden;
     font-family: fantasy;
     background-color: #e7e7e7;
+
+    width: 100%;
   }
-  
-  /* Links inside the navbar */
+
   .navbartwo a {
     float: left;
     font-size: 14px;
@@ -241,32 +232,6 @@
     margin-bottom: 10px;
   }
 
-  /*
-  .slidedivs:hover {
-    width: 270px;
-    height: 320px;
-    margin-right: 19px;
-  }
-
-  .slidedivs:hover img{
-    width: 270px;
-  }
-
-  .slidedivslast:hover{
-    width: 270px;
-    height: 320px;
-  }
-
-  .slidedivslast:hover img{
-    width: 270px;
-  }
-
-  .slidedivslast:hover .slide{
-    margin-right: 10%;
-  }
-  */
-
-
   .grün{
     margin-left: 15%;
     margin-right: 15%;
@@ -290,56 +255,189 @@
 .logogrün{
     width: 300px;
     float: right;
-    margin-top: -170px;
+    margin-top: -200px;
     margin-right: 200px;
 }
 
-.loginWindow{
+.regiwindow{
   background-color: #134a44;
-  border-radius: 8%;
+  height: 35%;
+  width: 30%;
   text-align: center;
-  margin-left: 40%;
-  margin-right: 40%;
-  margin-top: 10%;
+  font-family: fantasy;
+  border-radius: 40px;
+  margin-left: 35%;
+  margin-top: 5%;
 }
 
-.textfield {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  background-color: #dfe6de;
-  border-radius: 20px;
-  color: black;
+.loginwindow{
+  background-color: #134a44;
+  height: 25%;
+  width: 30%;
+  text-align: center;
+  font-family: fantasy;
+  border-radius: 40px;
+  margin-left: 35%;
+  margin-top: 2%;
+}
+
+.vorname{
+  border: none;
+  height: 30px;
+  width: 90%;
+  font-family: fantasy;
+  border-radius: 10px;
+  background-color: #ccd3cb;
+  font-size: 15px;
   outline: none;
-  border: none;
+  text-align: center;
 }
 
-.loginButton{
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  background-color: #dfe6de;
-  border-radius: 20px;
-  color: black;
-  outline: black;
-  background-color: aquamarine;
+.nachname{
   border: none;
-  margin-bottom: 2%;
+  height: 30px;
+  width: 90%;
+  font-family: fantasy;
+  border-radius: 10px;
+  background-color: #ccd3cb;
+  font-size: 15px;
+  text-align: center;
+  outline: none;
 }
 
-.loginButton:hover{
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  background-color: #dfe6de;
-  border-radius: 20px;
-  color: black;
-  outline: black;
-  background-color: #7fffd4a8;
+.email{
   border: none;
-  margin-bottom: 2%;
+  height: 30px;
+  width: 90%;
+  font-family: fantasy;
+  border-radius: 10px;
+  background-color: #ccd3cb;
+  font-size: 15px;
+  text-align: center;
+  outline: none;
 }
 
-.registerLink{
+.password{
+  border: none;
+  height: 30px;
+  width: 90%;
+  font-family: fantasy;
+  border-radius: 10px;
+  background-color: #ccd3cb;
+  font-size: 15px;
+  text-align: center;
+  outline: none;
+}
+
+
+
+.hregi{
+  padding-top: 10px;
   color: white;
 }
+
+.hlog{
+  padding-top: 10px;
+  color: white;
+}
+
+.button {
+  border-radius: 10px;
+  background-color: white;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 20px;
+  padding: 8px;
+  width: 120px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.zwischen{
+  height: 50px;
+}
+
+.site2{
+  border-radius: 30px;
+  background-color: #dfe6de;
+  padding: 20px;
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 20px;
+  font-family: fantasy;
+  
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+input[type="password"], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+
+.submit {
+  display: inline-block;
+  border-radius: 17px;
+  background-color: #134a44;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 15px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.submit:hover{
+  background-color: #39887f;
+}
+
+.service{
+  background-color: #134a44;
+}
+
