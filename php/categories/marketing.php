@@ -74,11 +74,11 @@
                     <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <a href="../workerregi/videoregi.php">Video & Audio</a>
-                        <a href="../workerregi/marketingregi.php">Marketing</a>
-                        <a href="../workerregi/itregi.php">IT Developer</a>
-                        <a href="../workerregi/coachregi.php">Coach</a>
-                        <a href="../workerregi/designregi.php">Web Designer</a>
+                        <a href="../workerregi/workerregi.php?job=video">Video & Audio</a>
+                        <a href="../workerregi/workerregi.php?job=marketing">Marketing</a>
+                        <a href="../workerregi/workerregi.php?job=itdev">IT Developer</a>
+                        <a href="../workerregi/workerregi.php?job=coach">Coach</a>
+                        <a href="../workerregi/workerregi.php?job=webdesign">Web Designer</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -141,22 +141,18 @@ if (!$result) {
         </tr>
     </thead>
     <tbody>
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-            <tr>
-                <td class="tdeins"><?php echo $row['Vorname']." "; echo $row['Nachname']; ?></td>
+      <?php
+       while ($row = mysqli_fetch_assoc($result)) { 
+            echo"<tr>";
+            echo"<td class='tdeins'>" . $row['Vorname']. " " . $row['Nachname'] . "</td>";
                 
-                <td><?php echo $row['Service']; ?></td>
-                <td><?php echo $row['Preis']; ?></td>
-                <td><a href="mailto:<?php echo $row['Email']; ?>" class="mailto">Contact</a></td>
-              </tr>
-        <?php } ?>
+            echo "<td>" . $row['Service'] . "</td>";
+            echo "<td>" . $row['Preis'] . "</td>";
+            echo "<td><a href='mailto:" . $row['Email'] . " class='mailto'>Contact</a></td>";
+
+            echo "</tr>";
+       }
+            ?>
     </tbody>
-</table>
-<div class="zws"></div>
-
-<?php
-mysqli_close($db);
-?>
-
-        </div>
+  </table>
 </html>
