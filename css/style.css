@@ -35,6 +35,7 @@
     background-color: inherit;
     font-family: inherit; 
     margin: 0; 
+    border-radius: 15px;
   }
 
   .navbar a:hover, .dropdown:hover .dropbtn {
@@ -48,7 +49,7 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    border-radius: 20px;
+    border-radius: 15px;
   }
   
   .dropdown-content a {
@@ -66,7 +67,7 @@
   
   .dropdown:hover .dropdown-content {
     display: block;
-  } 
+  }
 
   .first{
     margin-left: 10%;
@@ -395,7 +396,7 @@
   
 }
 
-input[type="text"], select {
+input[type="text"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -406,7 +407,7 @@ input[type="text"], select {
   outline: none;
 }
 
-input[type="password"], select {
+input[type="number"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -417,6 +418,27 @@ input[type="password"], select {
   outline: none;
 }
 
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  outline: none;
+}
 
 .submit {
   display: inline-block;
@@ -441,3 +463,11 @@ input[type="password"], select {
   background-color: #134a44;
 }
 
+.error{
+  color: red;
+  text-align: center;
+}
+
+.logout{
+  color: red;
+}

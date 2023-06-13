@@ -15,9 +15,7 @@ include 'DB.php';
     <div class="navbar">
         <a href="index.php" class="first">Home</a>
         <div class="dropdown">
-            <button class="dropbtn">Find Work
-                <i class="fa fa-caret-down"></i>
-            </button>
+            <button class="dropbtn">Find Work</button>
             <div class="dropdown-content">
                 <a href="workerregi/videoregi.php">Video & Audio</a>
                 <a href="workerregi/marketingregi.php">Marketing</a>
@@ -27,9 +25,7 @@ include 'DB.php';
             </div>
         </div>
         <div class="dropdown">
-            <button class="dropbtn">Top Worker
-                <i class="fa fa-caret-down"></i>
-            </button>
+            <button class="dropbtn">Top Worker</button>
             <div class="dropdown-content">
                 <a href="categories/topworker.php?categorie=video">Video & Audio</a>
                 <a href="categories/topworker.php?categorie=marketing">Marketing</a>
@@ -67,39 +63,55 @@ include 'DB.php';
     </div>
     <div class="zwischen"></div>
     <div class="site2">
-        <form action="login.php" method="post">
-            <label for="email">E-Mail</label>
+        <form action="register.php" method="post">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="vorname" placeholder="Your first name.." required>
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="nachname" placeholder="Your last name.." required>
+
+            <label for="fname">E-Mail</label>
             <input type="email" id="fname" name="email" placeholder="Your email.." required>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Your password.." required>
-            <input type="submit" value="Log In" class="submit">
+            <label for="lname">Password</label>
+            <input type="password" id="lname" name="password" placeholder="Your password.." required>
+            <input type="submit" value="Register" class="submit">
         </form>
+
         <?php
-        if (isset($_POST["email"]) && isset($_POST["password"])) {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
+        if (isset($_POST['vorname']) && isset($_POST['nachname']) && isset($_POST['email']) && isset($_POST['password'])) {
+            $vorname = $_POST['vorname'];
+            $nachname = $_POST['nachname'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
 
-            $stmt = $db->prepare("SELECT * FROM users WHERE `E-Mail`=:email;");
-            $stmt->bindParam(":email", $email);
-            $stmt->execute();
+            $statement1 = $db->prepare("SELECT * FROM users");
+            $statement1->execute();
 
-
-            $valid = false;
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $username = "";
-                $hashedPassword = $row["Password"];
-                $username = $row["Vorname"];
-
-                if (password_verify($password, $hashedPassword)) {
-                    session_start();
-                    $_SESSION["username"] = $username;
-                    header("Location: index.php");
-                } else {
-                    echo "<h3 class='error'>Bitte überprüfe die Login-Daten!</h3>";
+            $accountExists = false;
+            while ($row = $statement1->fetch(PDO::FETCH_ASSOC)) {
+                if ($row['E-Mail'] == $email) {
+                    $accountExists = true;
                 }
             }
 
+            if ($accountExists) {
+                echo "<h3 class='error'>Es gibt bereits einen Benutzer mit dieser E-Mail!</h3>";
+            } else {
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+                $statement = $db->prepare("INSERT INTO users (Vorname, Nachname, `E-Mail`, Password, Salt) VALUES (:vorname, :nachname, :email, :password)");
+                $statement->bindParam(":vorname", $vorname);
+                $statement->bindParam(":nachname", $nachname);
+                $statement->bindParam(":email", $email);
+                $statement->bindParam(":password", $hashedPassword);
+                $statement->execute();
+
+                session_start();
+                $_SESSION["username"] = $vorname;
+
+                header("Location: index.php");
+            }
         }
         ?>
     </div>
