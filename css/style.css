@@ -12,7 +12,17 @@
     font-size: 16px;
     color: black;
     text-align: center;
+    padding: 5px 8px;
+    text-decoration: none;
+  }
+
+  .navbar #first {
+    float: left;
+    font-size: 16px;
+    color: black;
+    text-align: center;
     padding: 14px 16px;
+    margin-left: 10%;
     text-decoration: none;
   }
 
@@ -20,6 +30,7 @@
     background-color: #dfe6de;
     border-radius: 15px;
   }
+
   
   .dropdown {
     float: left;
@@ -393,7 +404,6 @@
   margin: 0 auto;
   padding-top: 20px;
   font-family: fantasy;
-  
 }
 
 input[type="text"] {
@@ -470,4 +480,10 @@ input[type="email"] {
 
 .logout{
   color: red;
+}
+
+
+h3 #confirm{
+  color: lime;
+  text-align: center;
 }
