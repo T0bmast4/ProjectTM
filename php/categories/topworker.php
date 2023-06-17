@@ -81,11 +81,11 @@ if (isset($_GET["categorie"])) {
 <body>
 
     <div class="navbar">
-        <a href="../index.php" class="first">Home</a>
+        <a href="../index.php" id="first">Home</a>
         <div class="dropdown">
             <button class="dropbtn">Find Work
             </button>
-            <div class="dropdown-content" 2>
+            <div class="dropdown-content">
                 <a href="../workerregi/workerregi.php?job=video">Video & Audio</a>
                 <a href="../workerregi/workerregi.php?job=marketing">Marketing</a>
                 <a href="../workerregi/workerregi.php?job=itdev">IT Developer</a>
@@ -110,6 +110,7 @@ if (isset($_GET["categorie"])) {
             echo "<a href='../login.php' class='laston'>Log In</a>";
         } else {
             echo "<div class='laston' id='right'>";
+            echo "<a href='../profile.php'><img src='../../images/profile_pic1.png' height='38px' width='38px' alt='profilepic'></a>";
             echo "<div class='dropdown'>";
             echo "<button class='dropbtn'>" . $_SESSION["username"] . "</button>";
             echo "<div class='dropdown-content'>";
@@ -144,6 +145,8 @@ if (isset($_GET["categorie"])) {
                 echo "<h1>Coaches</h1>";
             } else if ($categorie == "webdesign") {
                 echo "<h1>Web-Designer</h1>";
+            } else if(isset($_GET["searchQuery"])) {
+                echo "<h1>Suchergebnis für &quot;" . $_GET["searchQuery"] . "&quot;</h1>";
             } else {
                 echo "<h1>443 Fehler</h1>";
                 echo "Dies kann folgende Ursachen haben: ";
@@ -170,11 +173,22 @@ if (isset($_GET["categorie"])) {
             </thead>
             <tbody>
                 <?php
-
-                $stmt = $db->prepare("SELECT * FROM `workers` WHERE `worktype`=:categorie");
-                $stmt->bindParam(":categorie", $categorie);
-                $stmt->execute();
-
+                $stmt = "";
+                if(isset($_GET["searchQuery"])) {
+                    $stmt = $db->prepare("SELECT * FROM `workers` WHERE `Vorname` LIKE :vorname OR `Nachname` LIKE :nachname OR `E-Mail` LIKE :email OR `Service` LIKE :serv OR `worktype` LIKE :categorie");
+                    $searchQuery = $_GET["searchQuery"] . "%";
+                    $stmt->bindParam(":vorname", $searchQuery);
+                    $stmt->bindParam(":nachname", $searchQuery);
+                    $stmt->bindParam(":email", $searchQuery);
+                    $stmt->bindParam(":serv", $searchQuery);
+                    $stmt->bindParam(":categorie", $searchQuery);
+                    $stmt->execute();
+                    
+                }else{
+                    $stmt = $db->prepare("SELECT * FROM `workers` WHERE `worktype`=:categorie");
+                    $stmt->bindParam(":categorie", $categorie);
+                    $stmt->execute();
+                }
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr>";
                     echo "<td class='tdeins'>" . $row["Vorname"] . " " . $row["Nachname"] . "</td>";
@@ -187,5 +201,7 @@ if (isset($_GET["categorie"])) {
                 ?>
             </tbody>
         </table>
-
+            </div>
+            </div>
+            </body>
 </html>

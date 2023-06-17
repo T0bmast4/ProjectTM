@@ -1,6 +1,6 @@
 <?php
 include 'DB.php';
-$db->exec("CREATE TABLE IF NOT EXISTS users(`ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `Vorname` VARCHAR(200), `Nachname` VARCHAR(200), `E-Mail` VARCHAR(200), `Password` VARCHAR(200));");
+$db->exec("CREATE TABLE IF NOT EXISTS users(`ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `Vorname` VARCHAR(200), `Nachname` VARCHAR(200), `E-Mail` VARCHAR(200), `Password` VARCHAR(200), `ProfilePic` VARCHAR(200));");
 $db->exec("CREATE TABLE IF NOT EXISTS workers(`ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `Vorname` VARCHAR(200), `Nachname` VARCHAR(200), `E-Mail` VARCHAR(200), `Service` VARCHAR(200), `Price` FLOAT, Worktype VARCHAR(200));");
 ?>
 
@@ -11,12 +11,17 @@ $db->exec("CREATE TABLE IF NOT EXISTS workers(`ID` INT NOT NULL AUTO_INCREMENT P
   <title>SmartShift.at</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="shortcut icon" href="../images/Logo.png" type="image/x-icon">
+  <style>
+    body {
+    overflow: hidden;
+    }
+  </style>
 </head>
 
 <body>
 
   <div class="navbar">
-    <a href="index.php" class="first">Home</a>
+    <a href="index.php" id="first">Home</a>
     <div class="dropdown">
       <button class="dropbtn">Find Work</button>
       <div class="dropdown-content">
@@ -31,11 +36,11 @@ $db->exec("CREATE TABLE IF NOT EXISTS workers(`ID` INT NOT NULL AUTO_INCREMENT P
       <button class="dropbtn">Top Worker
       </button>
       <div class="dropdown-content">
-        <a href="../categories/topworker.php?categorie=video">Video & Audio</a>
-        <a href="../categories/topworker.php?categorie=marketing">Marketing</a>
-        <a href="../categories/topworker.php?categorie=itdev">IT Developer</a>
-        <a href="../categories/topworker.php?categorie=coach">Coach</a>
-        <a href="../categories/topworker.php?categorie=webdesign">Web Designer</a>
+        <a href="categories/topworker.php?categorie=video">Video & Audio</a>
+        <a href="categories/topworker.php?categorie=marketing">Marketing</a>
+        <a href="categories/topworker.php?categorie=itdev">IT Developer</a>
+        <a href="categories/topworker.php?categorie=coach">Coach</a>
+        <a href="categories/topworker.php?categorie=webdesign">Web Designer</a>
       </div>
     </div>
     <?php
@@ -52,11 +57,12 @@ $db->exec("CREATE TABLE IF NOT EXISTS workers(`ID` INT NOT NULL AUTO_INCREMENT P
       echo "<a href='login.php' class='laston'>Log In</a>";
     } else {
       echo "<div class='laston' id='right'>";
+      echo "<a href='profile.php'><img src='../images/profile_pic1.png' height='38px' width='38px' alt='profilepic'></a>";
       echo "<div class='dropdown'>";
       echo "<button class='dropbtn'>" . $_SESSION["username"] . "</button>";
       echo "<div class='dropdown-content'>";
       echo "<a href='profile.php'>Profil</a>";
-      echo "<a class='logout' href='index.php?logout=true'>Logout</a>";
+      echo "<a class='logout' href='../index.php?logout=true'>Logout</a>";
       echo "</div>";
       echo "</div>";
       echo "</div>";
@@ -73,10 +79,10 @@ $db->exec("CREATE TABLE IF NOT EXISTS workers(`ID` INT NOT NULL AUTO_INCREMENT P
     <a href="categories/topworker.php?categorie=webdesign">Web Design</a>
   </div>
   <div class="grün">
-    <form action="categories/topworker.php" method="post">
+    <form action="categories/topworker.php" method="get">
       <div class="wrapper">
         <div class="searchBar">
-          <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="Search for &quot;Video Editing&quot; or &quot;Marketing&quot;" value=""/>
+          <input id="searchQuery" type="text" name="searchQuery" placeholder="Search for &quot;Video Editing&quot; or &quot;Marketing&quot;" value=""/>
         </div>
       </div>
     </form>

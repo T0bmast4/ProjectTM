@@ -20,7 +20,7 @@ session_start();
 
 <body>
     <div class="navbar">
-        <a href="../index.php" class="first">Home</a>
+        <a href="../index.php" id="first">Home</a>
         <div class="dropdown">
             <button class="dropbtn">Find Work</button>
             <div class="dropdown-content">
@@ -47,6 +47,7 @@ session_start();
             echo "<a href='../login.php' class='laston'>Log In</a>";
         } else {
             echo "<div class='laston' id='right'>";
+            echo "<a href='../profile.php'><img src='../../images/profile_pic1.png' height='38px' width='38px' alt='profilepic'></a>";
             echo "<div class='dropdown'>";
             echo "<button class='dropbtn'>" . $_SESSION["username"] . "</button>";
             echo "<div class='dropdown-content'>";
@@ -154,13 +155,19 @@ if (isset($_POST['vorname']) && isset($_POST['nachname']) && isset($_POST['email
     }
 
     if (!$hasAccount) {
-        $statement = $db->prepare("INSERT INTO `users`(`Vorname`, `Nachname`, `E-Mail`, `Password`) VALUES (:vorname, :nachname, :email, :password)");
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $standardProfilePic = "Profilbild1";
+        $statement = $db->prepare("INSERT INTO `users`(`Vorname`, `Nachname`, `E-Mail`, `Password`, `ProfilePic`) VALUES (:vorname, :nachname, :email, :password, :profilepic)");
 
         $statement->bindParam(":vorname", $vorname);
         $statement->bindParam(":nachname", $nachname);
         $statement->bindParam(":email", $email);
-        $statement->bindParam(":password", $password);
+        $statement->bindParam(":password", $hashedPassword);
+        $statement->bindParam(":profilepic", $standardProfilePic);
         $statement->execute();
+    }else{
+    session_start();
+    $_SESSION["username"] = $vorname;
     }
 
     $statement = $db->prepare("INSERT INTO `workers`(`Vorname`, `Nachname`, `E-Mail`, `Service`, `Price`, `Worktype`) VALUES (:vorname, :nachname, :email, :service, :preis, :worktype)");
@@ -177,11 +184,11 @@ if (isset($_POST['vorname']) && isset($_POST['nachname']) && isset($_POST['email
 
 
 
-
 } else if (isset($_SESSION["username"]) && isset($_POST['password']) && isset($_POST['service']) && isset($_POST['preis'])) {
     $vorname = $_SESSION["username"];
     $nachname = "";
     $email = "";
+    $password = $_POST["password"];
     $service = $_POST['service'];
     $preis = $_POST['preis'];
     $workerType = $_POST['job'];
@@ -195,11 +202,9 @@ if (isset($_POST['vorname']) && isset($_POST['nachname']) && isset($_POST['email
         $nachname = $row["Nachname"];
         $email = $row["E-Mail"];
         $username = $row["Vorname"];
-        $passwordWithSalt = $_POST['password'] . $row["Salt"];
-        $encryptedPassword = password_hash($passwordWithSalt, PASSWORD_BCRYPT);
-        if ($row["Password"] == $encryptedPassword) {
+        $hashedPassword = $row["Password"];
+        if (password_verify($password, $hashedPassword)) {
             $valid = true;
-            echo "True";
         }
     }
     if ($valid) {
@@ -212,7 +217,7 @@ if (isset($_POST['vorname']) && isset($_POST['nachname']) && isset($_POST['email
         $statement->bindParam(":preis", $preis);
         $statement->bindParam(":worktype", $workerType);
         $statement->execute();
-        //header("Location: ../categories/topworker.php?categorie=" . $workerType);
+        header("Location: ../categories/topworker.php?categorie=" . $workerType);
     } else {
         echo "<h3 class='error'>Bitte überprüfe dein Passwort!</h3>";
     }

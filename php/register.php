@@ -7,22 +7,22 @@ include 'DB.php';
 <head>
     <title>SmartShift.at</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="shortcut icon" href="../../images/Logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/Logo.png" type="image/x-icon">
 </head>
 
 <body>
 
     <div class="navbar">
-        <a href="index.php" class="first">Home</a>
+        <a href="index.php" id="first">Home</a>
         <div class="dropdown">
             <button class="dropbtn">Find Work</button>
             <div class="dropdown-content">
-                <a href="workerregi/videoregi.php">Video & Audio</a>
-                <a href="workerregi/marketingregi.php">Marketing</a>
-                <a href="workerregi/itregi.php">IT Developer</a>
-                <a href="workerregi/coachregi.php">Coach</a>
-                <a href="workerregi/designregi.php">Web Designer</a>
-            </div>
+        <a href="workerregi/workerregi.php?job=video">Video & Audio</a>
+        <a href="workerregi/workerregi.php?job=marketing">Marketing</a>
+        <a href="workerregi/workerregi.php?job=itdev">IT Developer</a>
+        <a href="workerregi/workerregi.php?job=coach">Coach</a>
+        <a href="workerregi/workerregi.php?job=webdesign">Web Designer</a>
+      </div>
         </div>
         <div class="dropdown">
             <button class="dropbtn">Top Worker</button>
@@ -42,6 +42,7 @@ include 'DB.php';
             echo "<a href='login.php' class='laston'>Log In</a>";
         } else {
             echo "<div class='laston' id='right'>";
+            echo "<a href='profile.php'><img src='../images/profile_pic1.png' height='38px' width='38px' alt='profilepic'></a>";
             echo "<div class='dropdown'>";
             echo "<button class='dropbtn'>" . $_SESSION["username"] . "</button>";
             echo "<div class='dropdown-content'>";
@@ -99,17 +100,16 @@ include 'DB.php';
                 echo "<h3 class='error'>Es gibt bereits einen Benutzer mit dieser E-Mail!</h3>";
             } else {
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
-                $statement = $db->prepare("INSERT INTO users (Vorname, Nachname, `E-Mail`, Password, Salt) VALUES (:vorname, :nachname, :email, :password)");
+                $profilepic = "Profilbild1";
+                $statement = $db->prepare("INSERT INTO users (Vorname, Nachname, `E-Mail`, Password, ProfilePic) VALUES (:vorname, :nachname, :email, :password, :profilepic)");
                 $statement->bindParam(":vorname", $vorname);
                 $statement->bindParam(":nachname", $nachname);
                 $statement->bindParam(":email", $email);
                 $statement->bindParam(":password", $hashedPassword);
+                $statement->bindParam(":profilepic", $profilepic);
                 $statement->execute();
 
-                session_start();
                 $_SESSION["username"] = $vorname;
-
                 header("Location: index.php");
             }
         }

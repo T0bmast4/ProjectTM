@@ -7,28 +7,26 @@ include 'DB.php';
 <head>
     <title>SmartShift.at</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="shortcut icon" href="../../images/Logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/Logo.png" type="image/x-icon">
 </head>
 
 <body>
 
     <div class="navbar">
-        <a href="index.php" class="first">Home</a>
+        <a href="index.php" id="first">Home</a>
         <div class="dropdown">
             <button class="dropbtn">Find Work
-                <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="workerregi/videoregi.php">Video & Audio</a>
-                <a href="workerregi/marketingregi.php">Marketing</a>
-                <a href="workerregi/itregi.php">IT Developer</a>
-                <a href="workerregi/coachregi.php">Coach</a>
-                <a href="workerregi/designregi.php">Web Designer</a>
-            </div>
+        <a href="workerregi/workerregi.php?job=video">Video & Audio</a>
+        <a href="workerregi/workerregi.php?job=marketing">Marketing</a>
+        <a href="workerregi/workerregi.php?job=itdev">IT Developer</a>
+        <a href="workerregi/workerregi.php?job=coach">Coach</a>
+        <a href="workerregi/workerregi.php?job=webdesign">Web Designer</a>
+      </div>
         </div>
         <div class="dropdown">
             <button class="dropbtn">Top Worker
-                <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
                 <a href="categories/topworker.php?categorie=video">Video & Audio</a>
@@ -46,6 +44,7 @@ include 'DB.php';
             echo "<a href='login.php' class='laston'>Log In</a>";
         } else {
             echo "<div class='laston' id='right'>";
+            echo "<a href='profile.php'><img src='../images/profile_pic1.png' height='38px' width='38px' alt='profilepic'></a>";
             echo "<div class='dropdown'>";
             echo "<button class='dropbtn'>" . $_SESSION["username"] . "</button>";
             echo "<div class='dropdown-content'>";
@@ -69,7 +68,7 @@ include 'DB.php';
     <div class="site2">
         <form action="login.php" method="post">
             <label for="email">E-Mail</label>
-            <input type="email" id="fname" name="email" placeholder="Your email.." required>
+            <input type="email" id="email" name="email" placeholder="Your email.." required>
 
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Your password.." required>
@@ -79,27 +78,28 @@ include 'DB.php';
         if (isset($_POST["email"]) && isset($_POST["password"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
-
+        
             $stmt = $db->prepare("SELECT * FROM users WHERE `E-Mail`=:email;");
             $stmt->bindParam(":email", $email);
             $stmt->execute();
 
-
             $valid = false;
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $username = "";
                 $hashedPassword = $row["Password"];
                 $username = $row["Vorname"];
-
+        
                 if (password_verify($password, $hashedPassword)) {
-                    session_start();
-                    $_SESSION["username"] = $username;
-                    header("Location: index.php");
-                } else {
-                    echo "<h3 class='error'>Bitte überprüfe die Login-Daten!</h3>";
+                    $valid = true;
                 }
             }
 
+            if($valid) {
+                session_start();
+                $_SESSION["username"] = $username;
+                header("Location: index.php");
+            }else{
+                echo "<h3 class='error'>Bitte überprüfe die Login-Daten!</h3>";
+            }
         }
         ?>
     </div>
